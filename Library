@@ -6312,8 +6312,8 @@ local function OpenAnimation()
                 end)
         end)
 
-        task.wait(4)
-        game:GetService("TweenService"):Create(Framer,TweenInfo.new(0.45,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Size = UDim2.fromScale(0.229,0)}):Play()
+        task.wait(4.85)
+        game:GetService("TweenService"):Create(Framer,TweenInfo.new(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Size = UDim2.fromScale(0.229,0)}):Play()
         task.delay(0.15,function()
             textlabel.Visible = false
         end)
@@ -6322,7 +6322,6 @@ local function OpenAnimation()
         screenGui:Destroy()
     end
     Anim()
-    getgenv().Screen = screenGui
 end
 
 function Library:CreateWindow(WindowInfo)
