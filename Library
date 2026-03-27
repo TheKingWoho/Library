@@ -6210,7 +6210,124 @@ function Library:Notify(...)
     return Data
 end
 
+local function OpenAnimation()
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+    local BG = Instance.new("Frame",screenGui)
+    BG.AnchorPoint = Vector2.new(0.5, 0.5)
+    BG.Position = UDim2.fromScale(0.5,0.5)
+    BG.Size = UDim2.fromScale(1,1)
+    BG.BackgroundTransparency = 1
+
+    local UIListLayoutt = Instance.new("UIListLayout",BG)
+    UIListLayoutt.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    UIListLayoutt.VerticalAlignment = Enum.VerticalAlignment.Center
+
+    local Framer = Instance.new("Frame",BG)
+    Framer.AnchorPoint = Vector2.new(0.5, 0.5)
+    Framer.Position = UDim2.fromScale(0.5,0.5)
+    Framer.Size = UDim2.fromScale(0.229,0)
+    Framer.BackgroundColor3 = Color3.fromRGB(42,42,42)
+    Framer.BackgroundTransparency = 0.1
+    --UDim2.fromScale(0.229,0.184)
+
+    local UICorner = Instance.new("UICorner",Framer)
+    UICorner.CornerRadius = UDim.new(0.025,0)
+
+    local UIStroke = Instance.new("UIStroke",Framer)
+    UIStroke.Thickness = 2.5
+    UIStroke.Color = Color3.fromRGB(255,255,255)
+
+    local textLabell = Instance.new("TextLabel",Framer)
+    textLabell.AnchorPoint = Vector2.new(0.5, 0.5)
+    textLabell.Position = UDim2.fromScale(0.5,0.5)
+    textLabell.Size = UDim2.fromScale(1,0.257)
+    textLabell.Text = "Tensen Hub"
+    textLabell.TextColor3 = Color3.fromRGB(255,255,255)
+    textLabell.TextScaled = true
+    textLabell.Font = Enum.Font.FredokaOne
+    textLabell.BackgroundTransparency = 1
+    textLabell.Visible = false
+    textLabell.TextTransparency = 1
+
+    local Gradient = loadstring(game:HttpGet("https://raw.githubusercontent.com/TheKingWoho/TextAnimation/refs/heads/main/TextAnim"))()
+
+    local function Anim()
+        game:GetService("TweenService"):Create(Framer,TweenInfo.new(0.85,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Size = UDim2.fromScale(0.229,0.184)}):Play()
+        task.delay(0.45,function()
+            textLabell.Visible = true
+            game:GetService("TweenService"):Create(textLabell,TweenInfo.new(0.35,Enum.EasingStyle.Sine,Enum.EasingDirection.Out,0,false),{TextTransparency = 0}):Play()
+            task.wait(0.15)
+             
+                local grad = Gradient.new(
+                    textLabell,
+                    ColorSequence.new({
+                        ColorSequenceKeypoint.new(0, Color3.new(1, 1, 1)),
+                        ColorSequenceKeypoint.new(0.015625, Color3.new(1, 1, 1)),
+                        ColorSequenceKeypoint.new(0.1458333283662796, Color3.new(1, 1, 1)),
+                        ColorSequenceKeypoint.new(0.2482638955116272, Color3.new(1, 1, 1)),
+                        ColorSequenceKeypoint.new(0.3559027910232544, Color3.new(1, 1, 1)),
+                        ColorSequenceKeypoint.new(0.4970000088214874, Color3.new(1, 1, 1)),
+                        ColorSequenceKeypoint.new(0.503000020980835, Color3.new(0, 0, 0)),
+                        ColorSequenceKeypoint.new(0.647569477558136, Color3.new(0, 0, 0)),
+                        ColorSequenceKeypoint.new(0.7829861044883728, Color3.new(0, 0, 0)),
+                        ColorSequenceKeypoint.new(0.890625, Color3.new(0, 0, 0)),
+                        ColorSequenceKeypoint.new(0.9774305820465088, Color3.new(0, 0, 0)),
+                        ColorSequenceKeypoint.new(1, Color3.new(0, 0, 0)),
+                    }),
+                    0
+                )
+
+                local stroke = Instance.new("UIStroke",textLabel)
+                stroke.Thickness = 2.2
+                stroke.Color = Color3.fromRGB(255, 255, 255)
+
+                local grad2 = Gradient.new(
+                    stroke,
+                    ColorSequence.new({
+                        ColorSequenceKeypoint.new(0, Color3.new(1, 1, 1)),
+                        ColorSequenceKeypoint.new(0.015625, Color3.new(1, 1, 1)),
+                        ColorSequenceKeypoint.new(0.1458333283662796, Color3.new(1, 1, 1)),
+                        ColorSequenceKeypoint.new(0.2482638955116272, Color3.new(1, 1, 1)),
+                        ColorSequenceKeypoint.new(0.3559027910232544, Color3.new(1, 1, 1)),
+                        ColorSequenceKeypoint.new(0.4970000088214874, Color3.new(1, 1, 1)),
+                        ColorSequenceKeypoint.new(0.503000020980835, Color3.new(0, 0, 0)),
+                        ColorSequenceKeypoint.new(0.647569477558136, Color3.new(0, 0, 0)),
+                        ColorSequenceKeypoint.new(0.7829861044883728, Color3.new(0, 0, 0)),
+                        ColorSequenceKeypoint.new(0.890625, Color3.new(0, 0, 0)),
+                        ColorSequenceKeypoint.new(0.9774305820465088, Color3.new(0, 0, 0)),
+                        ColorSequenceKeypoint.new(1, Color3.new(0, 0, 0)),
+                    }),
+                    0
+                )
+
+                grad:SetOffsetSpeed(0.5, 1)
+                grad:SetRotation(90, 1)
+
+                grad2:SetOffset(0.5,1)
+                grad2:SetRotation(90,1)
+                task.delay(0.1,function()
+                    grad2:SetOffsetSpeed(0.5,1)
+                end)
+        end)
+
+        task.wait(2)
+        game:GetService("TweenService"):Create(Framer,TweenInfo.new(0.45,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Size = UDim2.fromScale(0.229,0)}):Play()
+        task.delay(0.15,function()
+            textlabel.Visible = false
+        end)
+
+        task.wait(0.45)
+        screenGui:Destroy()
+    end
+    Anim()
+    getgenv().Screen = screenGui
+end
+
 function Library:CreateWindow(WindowInfo)
+    OpenAnimation()
+
     WindowInfo = Library:Validate(WindowInfo, Templates.Window)
     local ViewportSize: Vector2 = workspace.CurrentCamera.ViewportSize
     if RunService:IsStudio() and ViewportSize.X <= 5 and ViewportSize.Y <= 5 then
