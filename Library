@@ -1,6 +1,7 @@
 local cloneref = (cloneref or clonereference or function(instance: any)
     return instance
 end)
+local Gradient = loadstring(game:HttpGet("https://raw.githubusercontent.com/TheKingWoho/TextAnimation/refs/heads/main/TextAnim"))()
 local CoreGui: CoreGui = cloneref(game:GetService("CoreGui"))
 local Players: Players = cloneref(game:GetService("Players"))
 local RunService: RunService = cloneref(game:GetService("RunService"))
@@ -6251,8 +6252,6 @@ local function OpenAnimation()
     textLabell.BackgroundTransparency = 1
     textLabell.Visible = false
     textLabell.TextTransparency = 1
-
-    local Gradient = loadstring(game:HttpGet("https://raw.githubusercontent.com/TheKingWoho/TextAnimation/refs/heads/main/TextAnim"))()
 
     local function Anim()
         game:GetService("TweenService"):Create(Framer,TweenInfo.new(0.85,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Size = UDim2.fromScale(0.229,0.184)}):Play()
