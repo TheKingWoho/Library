@@ -6313,7 +6313,7 @@ local function OpenAnimation()
                 end)
         end)
 
-        task.wait(2)
+        task.wait(1)
         game:GetService("TweenService"):Create(Framer,TweenInfo.new(0.45,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Size = UDim2.fromScale(0.229,0)}):Play()
         task.delay(0.1,function()
             textLabell.Visible = false
