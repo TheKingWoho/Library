@@ -6279,7 +6279,7 @@ local function OpenAnimation()
                     0
                 )
 
-                local stroke = Instance.new("UIStroke",textLabel)
+                local stroke = Instance.new("UIStroke",textLabell)
                 stroke.Thickness = 2.2
                 stroke.Color = Color3.fromRGB(255, 255, 255)
 
@@ -6312,7 +6312,7 @@ local function OpenAnimation()
                 end)
         end)
 
-        task.wait(4.85)
+        task.wait(6)
         game:GetService("TweenService"):Create(Framer,TweenInfo.new(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Size = UDim2.fromScale(0.229,0)}):Play()
         task.delay(0.15,function()
             textlabel.Visible = false
