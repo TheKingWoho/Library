@@ -6313,22 +6313,21 @@ local function OpenAnimation()
                 end)
         end)
 
-        task.wait(10)
-        game:GetService("TweenService"):Create(Framer,TweenInfo.new(0.8,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Size = UDim2.fromScale(0.229,0)}):Play()
+        task.wait(5)
+        game:GetService("TweenService"):Create(Framer,TweenInfo.new(0.45,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Size = UDim2.fromScale(0.229,0)}):Play()
         task.delay(0.15,function()
             textlabel.Visible = false
         end)
-
+        getgenv().AnimFinished = true
         task.wait(0.45)
         screenGui:Destroy()
-        getgenv().AnimFinished = true
     end
     Anim()
 end
 
 OpenAnimation()
 function Library:CreateWindow(WindowInfo)
-    repeat task.wait(0.1) until getgenv().AnimFinished == true
+    repeat task.wait() until getgenv().AnimFinished == true
     WindowInfo = Library:Validate(WindowInfo, Templates.Window)
     local ViewportSize: Vector2 = workspace.CurrentCamera.ViewportSize
     if RunService:IsStudio() and ViewportSize.X <= 5 and ViewportSize.Y <= 5 then
